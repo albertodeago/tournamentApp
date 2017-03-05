@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Inserimento dati primo accesso</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+
+	<h2>Attenzione, i dati non possono essere cambiati dopo l'inserimento!</h2>
+
+  <ion-item>
+    <ion-input [(ngModel)]="name" type="text" placeholder="Nome o soprannome"></ion-input>
+  </ion-item>
+
+	<ion-item>
+	  <ion-label>Giochi al torneo?</ion-label>
+	  <ion-toggle [(ngModel)]="isPlayer" checked="false"></ion-toggle>
+	</ion-item>
+
+	<ion-list>
+	  <ion-item>
+	    <ion-label>Con che squadra?</ion-label>
+	    <ion-select [(ngModel)]="team">
+	      <ion-option *ngFor="let t of teamList">{{t}}</ion-option>
+	    </ion-select>
+	  </ion-item>
+	</ion-list>
+
+	<button ion-button (click)="confirmData()">Conferma</button>
+
+</ion-content>

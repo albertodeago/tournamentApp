@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Group B</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+
+	<ion-card>
+		<ion-card-content>
+			<p *ngFor="let team of teams">
+				{{team.name}}
+			</p>
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card *ngFor="let match of matches">
+	  <ion-card-header>
+	    {{match.date}} - {{match.time}}
+	  </ion-card-header>
+	  <ion-card-content>
+	  	<p>{{match.team1}} VS {{match.team2}}</p>
+		<p>Campo {{match.playingField}}</p>
+		<p>Arbitro: {{match.referee}}</p>
+		<p>Girone: {{match.group}}</p>
+	  </ion-card-content>
+	</ion-card>
+</ion-content>

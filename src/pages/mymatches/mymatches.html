@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Le mie partite</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+
+  <ion-card *ngFor="let match of mymatches">
+    <ion-card-header>
+      {{match.date}} - {{match.time}}
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{match.team1}} VS {{match.team2}}</p>
+      <p>Campo {{match.playingField}}</p>
+      <p>Arbitro: {{match.referee}}</p>
+      <!-- <img src="../../assets/other/my-icons/serve.svg" width="10px"/> -->
+    </ion-card-content>
+  </ion-card>
+  
+
+</ion-content>
