@@ -12,12 +12,12 @@
 
   <ion-card *ngFor="let match of mymatches">
     <ion-card-header>
-      {{match.date}} - {{match.time}}
+      <span class="date">{{match.date}}</span> - <span class="time">{{match.time}}</span>
     </ion-card-header>
     <ion-card-content>
-      <p>{{match.team1}} VS {{match.team2}}</p>
-      <p>Campo {{match.playingField}}</p>
-      <p>Arbitro: {{match.referee}}</p>
+      <p>Squadra avversaria: <span class="enemy" *ngIf="match.team1 !== personalTeam">{{match.team1}}</span><span class="enemy" *ngIf="match.team2 !== personalTeam">{{match.team2}}</span></p>
+      <p class="referee" *ngIf="match.referee !== null">Arbitro: {{match.referee}}</p>
+      <p class="field" *ngIf="match.playingField !== null">Campo {{match.playingField}}</p>
       <!-- <img src="../../assets/other/my-icons/serve.svg" width="10px"/> -->
     </ion-card-content>
   </ion-card>

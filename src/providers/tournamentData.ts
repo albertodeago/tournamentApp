@@ -15,6 +15,8 @@ export class TournamentData {
 	playerEndPoint: string;
 	postEndPoint: string;
 
+	tournamentName: string;
+
 	matches: any;
 	players: any;
 	teams: any;
@@ -44,7 +46,9 @@ export class TournamentData {
 	}
 
 	initEndpoints(){
-		this.baseWsEndPoint = "https://testnode-miniapplications.rhcloud.com/";
+		this.tournamentName = "tremignon/"; // TODO STUB, should have the tournament name value based on input choice
+		
+		this.baseWsEndPoint = "https://testnode-miniapplications.rhcloud.com/" + this.tournamentName;
 		this.getAllEndPoint = this.baseWsEndPoint + "all";
 		this.intelligenceEndPoint = this.baseWsEndPoint + "intelligence";
 		this.playerEndPoint = this.baseWsEndPoint + "player";

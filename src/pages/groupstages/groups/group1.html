@@ -7,21 +7,28 @@
 
 	<ion-card>
 		<ion-card-content>
-			<p *ngFor="let team of teams">
-				{{team.name}}
-			</p>
+			<div class="team-list">
+				<span id="team-{{i}}" class="team" *ngFor="let team of teams; let i = index" [attr.data-index]="i">
+					{{team.name}}
+				</span>
+			</div>
+
+			<!-- <span *ngFor="let color of teamColors"> {{color}}</span> -->
 		</ion-card-content>
 	</ion-card>
 
-	<ion-card *ngFor="let match of matches">
+	<ion-card *ngFor="let match of matches; let i=index" [attr.data-index]="i" id="match-{{i}}">
 	  <ion-card-header>
-	    {{match.date}} - {{match.time}}
+	    <span class="date">{{match.date}}</span> - <span class="time">{{match.time}}</span>
 	  </ion-card-header>
 	  <ion-card-content>
-	  	<p>{{match.team1}} VS {{match.team2}}</p>
-		<p>Campo {{match.playingField}}</p>
-		<p>Arbitro: {{match.referee}}</p>
-		<p>Girone: {{match.group}}</p>
+	  	<p class="vs-row">
+	  		<span class="team1">{{match.team1}}</span> 
+	  			VS 
+	  		<span class="team2">{{match.team2}}</span>
+	  	</p>
+		<p class="referee">Arbitro: {{match.referee}}</p>
+		<p class="field">Campo {{match.playingField}}</p>
 	  </ion-card-content>
 	</ion-card>
 </ion-content>
