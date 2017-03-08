@@ -44,7 +44,7 @@ export class TournamentData {
 		);
 
 	}
-
+ 
 	initEndpoints(){
 		this.tournamentName = "tremignon/"; // TODO STUB, should have the tournament name value based on input choice
 		
