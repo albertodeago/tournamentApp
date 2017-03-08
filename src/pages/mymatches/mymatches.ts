@@ -5,8 +5,6 @@ import { Storage } from '@ionic/storage';
 import { TournamentData } from '../../providers/tournamentData';
 import { FirstAccess } from '../firstaccess/firstaccess';
 
-//import { Push, PushToken } from '@ionic/cloud-angular';
-
 @Component({
   selector: 'page-mymatches',
   templateUrl: 'mymatches.html'
@@ -30,8 +28,7 @@ export class MyMatches {
   						public loaderC: LoadingController, 
   						public modalC: ModalController,
   						public _events: Events,
-  						public _storage: Storage/*,
-  						public push: Push*/) {
+  						public _storage: Storage) {
   	
   	this.allmatches = [];
   	this.mymatches = [];
@@ -63,17 +60,6 @@ export class MyMatches {
 			this.teams = _tData.teams;
 			this.filterMyMatches(this.allmatches);
 		}
-
-		/*push.register().then((t: PushToken) => {
-			return this.push.saveToken(t);
-		}).then((t: PushToken) => {
-			console.log("Token saved", t.token);
-		});
-
-		push.rx.notification()
-			.subscribe((msg) => {
-				alert(msg.title + ': ' + msg.text);
-			});*/
   }
 
   filterMyMatches( matches ) {

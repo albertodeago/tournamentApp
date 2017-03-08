@@ -15,21 +15,6 @@ import { TournamentData } from '../providers/tournamentData';
 
 import { IonicImageViewerModule } from 'ionic-img-viewer'; // wait for github reply
 
-/*import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
-
-const cloudSettings: CloudSettings = {
-  'core':{
-    'app_id': 'e2a7bd45'
-  },
-  'push':{
-    'sender_id': '860800151413',
-    'pluginConfig':{
-      'android':{
-        'iconColor': '#343434'
-      }
-    }
-  }
-};*/
 
 @NgModule({
   declarations: [
@@ -45,8 +30,7 @@ const cloudSettings: CloudSettings = {
   ],
   imports: [
     IonicModule.forRoot(MyApp),
-    IonicImageViewerModule/*,
-    CloudModule.forRoot(cloudSettings)*/
+    IonicImageViewerModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

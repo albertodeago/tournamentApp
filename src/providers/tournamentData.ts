@@ -7,7 +7,9 @@ import 'rxjs/add/operator/map';
 export class TournamentData {
 
 	http: Http;
+	events: Events;
 
+	getTournamentListEndpoint: string;
 	baseWsEndPoint: string;
 	getAllEndPoint: string;
 	intelligenceEndPoint: string;
@@ -22,39 +24,68 @@ export class TournamentData {
 	teams: any;
 	isPopulated: boolean;
 
-	constructor(public _http: Http, public events: Events) {
+	tournamentList: any;
 
-		this.initEndpoints();
+	constructor(public _http: Http, public _events: Events) {
 		this.http = _http;
+		this.events = _events;
 
 		this.isPopulated = false;
 
-		this.http.get(this.getAllEndPoint).map(res => res.json()).subscribe(
-			data => {
-				this.matches = data.matches;
-				this.players = data.players;
-				this.teams = data.teams;
-				this.isPopulated = true;
-				console.log("Fetched data from openshift! Emitting event 'data:fetched'", data);
-				events.publish('data:fetched', true);
-			},
-			err => {
-				console.log("Error while retrieving all data: ", err);
-			}
-		);
+		this.getTournamentListEndpoint = "https://testnode-miniapplications.rhcloud.com/tournaments";
+		this.getTournamentList();
+
+		this.setTournament('tremignon-2017'); // this should be called when the user choose the tournament
+		this.initEndpoints(); // this should be called when the user choose the tournament
 
 	}
 
-	initEndpoints(){
-		this.tournamentName = "tremignon/"; // TODO STUB, should have the tournament name value based on input choice
-		
-		this.baseWsEndPoint = "https://testnode-miniapplications.rhcloud.com/" + this.tournamentName;
+	initEndpoints(){		
+		this.baseWsEndPoint = "https://testnode-miniapplications.rhcloud.com/" + this.tournamentName + "/";
 		this.getAllEndPoint = this.baseWsEndPoint + "all";
 		this.intelligenceEndPoint = this.baseWsEndPoint + "intelligence";
 		this.playerEndPoint = this.baseWsEndPoint + "player";
 		this.postEndPoint = this.baseWsEndPoint + "post";
 
 		this.alreadySent = false;
+	}
+
+	getTournamentList(){
+		this.http.get(this.getTournamentListEndpoint).map(res => res.json()).subscribe(
+			data => {
+				console.log("Got the tournament list", data);
+				this.tournamentList = data;
+				this.events.publish('got-tournament-list', true);
+
+				// STUB, to be removed when the user chooses the tournament
+				this.setTournament('tremignon-2017');
+				this.initEndpoints();
+				this.getDataOfTournament();
+			},
+			err => {
+				console.log("Error while retrieving the tournament list: ", err);
+			}
+		);
+	}
+
+	setTournament(tournament){
+		this.tournamentName = tournament;
+	}
+
+	getDataOfTournament(){
+		this.http.get(this.getAllEndPoint).map(res => res.json()).subscribe(	// TODO this has to be called after the user choose the tournament
+			data => {
+				this.matches = data.matches;
+				this.players = data.players;
+				this.teams = data.teams;
+				this.isPopulated = true;
+				console.log("Fetched data from openshift! Emitting event 'data:fetched'", data);
+				this.events.publish('data:fetched', true);
+			},
+			err => {
+				console.log("Error while retrieving all data: ", err);
+			}
+		);
 	}
 
 	sendIntelligenceData(param){
