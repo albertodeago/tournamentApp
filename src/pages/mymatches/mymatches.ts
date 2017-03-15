@@ -5,6 +5,8 @@ import { Storage } from '@ionic/storage';
 import { TournamentData } from '../../providers/tournamentData';
 import { FirstAccess } from '../firstaccess/firstaccess';
 
+import { SelectTournament } from '../selecttournament/selecttournament';
+
 @Component({
   selector: 'page-mymatches',
   templateUrl: 'mymatches.html'
@@ -22,11 +24,12 @@ export class MyMatches {
 	personalName: string;
 
 	tournamentData: TournamentData;
+	modalC: ModalController
   
   constructor(public navCtrl: NavController, 
   						public _tData: TournamentData,
   						public loaderC: LoadingController, 
-  						public modalC: ModalController,
+  						public _modalC: ModalController,
   						public _events: Events,
   						public _storage: Storage) {
   	
@@ -35,29 +38,47 @@ export class MyMatches {
   	this.storage = _storage;
   	this.events = _events;
   	this.tournamentData = _tData;
-	  
-	  if(!_tData.isPopulated){
-		  
+  	this.modalC = _modalC;
+
+  	// create the modal to let the user select the tournament //
+  	let _loader = this.loaderC.create({
+		  	content: "Caricamento lista tornei..."
+		  });
+		_loader.present();
+		var tournamentSelectionModal = this.modalC.create( SelectTournament );
+		tournamentSelectionModal.present();
+		this.events.subscribe('tournament:selected', (data) => {
+			_loader.dismiss();
+			tournamentSelectionModal.dismiss();
+			this.onSelectedTournament(data.tournament);
+		});	 
+  }
+
+  onSelectedTournament(tournament) {
+  	console.log("onSelectedTournament: " + tournament);
+
+  	// setting the choosen tournament //
+  	this.tournamentData.setTournament(tournament);
+
+		if(!this.tournamentData.isPopulated){
 		  let _loader = this.loaderC.create({
-		  	content: "Caricamento dati..."
+		  	content: "Caricamento dati torneo..."
 		  });
 		  _loader.present();
 
 		  this.events.subscribe('data:fetched', (data) =>{
-
-		  	//console.log("event catched: ", data);
-		  	this.allmatches = _tData.matches;
-		  	this.teams = _tData.teams;
+		  	this.allmatches = this.tournamentData.matches;
+		  	this.teams = this.tournamentData.teams;
 		  	_loader.dismiss();
 
-		  	this.checkIfFirstAccess( modalC );
+		  	this.checkIfFirstAccess( this.modalC );
 		  });
 		}
 		else{
 			console.log("else -> data is populated");
-			this.checkIfFirstAccess( modalC );
-			this.allmatches = _tData.matches;
-			this.teams = _tData.teams;
+			this.checkIfFirstAccess( this.modalC );
+			this.allmatches = this.tournamentData.matches;
+			this.teams = this.tournamentData.teams;
 			this.filterMyMatches(this.allmatches);
 		}
   }
@@ -82,7 +103,7 @@ export class MyMatches {
   				this.personalName = data.name;
 
   				// todo do something with data
-		  		this.filterMyMatches(this.allmatches);
+		  		this.filterMyMatches(this.allmatches); 
 
   				// save Data from storage
   				this.storage.set("team", this.personalTeam).then( (val) => {

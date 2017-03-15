@@ -11,6 +11,7 @@ import { FinalStages } from '../pages/finalstages/finalstages';
 import { Photos } from '../pages/photos/photos';
 import { Menu } from '../pages/menu/menu';
 import { FirstAccess } from '../pages/firstaccess/firstaccess';
+import { SelectTournament } from '../pages/selecttournament/selecttournament';
 import { TournamentData } from '../providers/tournamentData';
 
 import { IonicImageViewerModule } from 'ionic-img-viewer'; // wait for github reply
@@ -26,7 +27,8 @@ import { IonicImageViewerModule } from 'ionic-img-viewer'; // wait for github re
     Menu,
     Group1,
     Group2,
-    FirstAccess
+    FirstAccess,
+    SelectTournament
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -42,7 +44,8 @@ import { IonicImageViewerModule } from 'ionic-img-viewer'; // wait for github re
     Menu,
     Group1,
     Group2,
-    FirstAccess
+    FirstAccess,
+    SelectTournament
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler}, 

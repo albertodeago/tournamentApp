@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Seleziona il torneo</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="card-background-page">
+
+  <ion-card *ngFor="let tournament of tournamentList" (click)="selectTournament(tournament)">
+    <img src="../../assets/other/menu.jpg"/>
+    <div class="card-title">{{tournament}}</div>
+  </ion-card>
+
+</ion-content>

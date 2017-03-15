@@ -25,6 +25,7 @@ export class TournamentData {
 	isPopulated: boolean;
 
 	tournamentList: any;
+	tournamentListPromise: any;
 
 	constructor(public _http: Http, public _events: Events) {
 		this.http = _http;
@@ -33,11 +34,7 @@ export class TournamentData {
 		this.isPopulated = false;
 
 		this.getTournamentListEndpoint = "https://testnode-miniapplications.rhcloud.com/tournaments";
-		this.getTournamentList();
-
-		this.setTournament('tremignon-2017'); // this should be called when the user choose the tournament
-		this.initEndpoints(); // this should be called when the user choose the tournament
-
+		this.getTournamentList(); 
 	}
 
 	initEndpoints(){		
@@ -51,25 +48,28 @@ export class TournamentData {
 	}
 
 	getTournamentList(){
-		this.http.get(this.getTournamentListEndpoint).map(res => res.json()).subscribe(
+		this.tournamentListPromise = new Promise(function(resolve, reject){
+			this.http.get(this.getTournamentListEndpoint).map(res => res.json()).subscribe(
 			data => {
 				console.log("Got the tournament list", data);
 				this.tournamentList = data;
 				this.events.publish('got-tournament-list', true);
-
-				// STUB, to be removed when the user chooses the tournament
-				this.setTournament('tremignon-2017');
-				this.initEndpoints();
-				this.getDataOfTournament();
+				resolve(data);
 			},
 			err => {
 				console.log("Error while retrieving the tournament list: ", err);
+				reject();
 			}
 		);
+		}.bind(this));
 	}
 
 	setTournament(tournament){
 		this.tournamentName = tournament;
+
+		// tournament has been setted, we can init endpoints and get the data 
+		this.initEndpoints();
+		this.getDataOfTournament();
 	}
 
 	getDataOfTournament(){
