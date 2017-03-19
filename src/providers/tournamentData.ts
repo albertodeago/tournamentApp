@@ -32,6 +32,7 @@ export class TournamentData {
 		this.events = _events;
 
 		this.isPopulated = false;
+		this.tournamentName = "";
 
 		this.getTournamentListEndpoint = "https://testnode-miniapplications.rhcloud.com/tournaments";
 		this.getTournamentList(); 
@@ -68,12 +69,14 @@ export class TournamentData {
 		this.tournamentName = tournament;
 
 		// tournament has been setted, we can init endpoints and get the data 
-		this.initEndpoints();
-		this.getDataOfTournament();
+		if( !this.isPopulated ){
+			this.initEndpoints();
+			this.getDataOfTournament();
+		}
 	}
 
 	getDataOfTournament(){
-		this.http.get(this.getAllEndPoint).map(res => res.json()).subscribe(	// TODO this has to be called after the user choose the tournament
+		this.http.get(this.getAllEndPoint).map(res => res.json()).subscribe(
 			data => {
 				this.matches = data.matches;
 				this.players = data.players;

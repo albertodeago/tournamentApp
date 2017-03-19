@@ -9,3 +9,23 @@
 .field {
 	float: right;
 }
+
+.card {
+	// card background //
+	.tremignon-2017 & {
+		background-color: $tremignon-2017-first;
+	}
+	.camisano-2017 & {
+		background-color: $camisano-2017-first;
+	}
+
+	.card-header {
+		// header text color //
+		.tremignon-2017 & {
+			color: $tremignon-2017-second;
+		}
+		.camisano-2017 & {
+			color: $camisano-2017-second;
+		}
+	}
+}

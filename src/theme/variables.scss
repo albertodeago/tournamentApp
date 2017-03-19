@@ -31,6 +31,18 @@ $colors: (
   dark:       #222
 );
 
+// tremignon-2017 variables //
+$tremignon-2017-first : #000000;
+$tremignon-2017-second: #F22DEC;
+$tremignon-2017-third : #00E6FB;
+$tremignon-2017-fourth: #ffffff;
+
+// camisano-2017 variables //
+$camisano-2017-first : #ffffff;
+$camisano-2017-second: #00E6FB;
+$camisano-2017-third : #F22DEC;
+$camisano-2017-fourth: #000000;
+
 
 // App iOS Variables
 // --------------------------------------------------
@@ -76,3 +88,61 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+
+
+// Common rules
+// --------------------------------------------------
+
+//-------------------------------------------------//
+//------------------- HEADER ----------------------//
+//-------------------------------------------------//
+//page-groupstages {
+		.toolbar {						// header background
+			.toolbar-background {
+				.tremignon-2017 & {
+					background: $tremignon-2017-first;
+				}
+				.camisano-2017 & {
+					background: $camisano-2017-first;
+				}
+			}
+			
+			.toolbar-title {		// header title
+				.tremignon-2017 & {
+					color: $tremignon-2017-second;
+				}
+				.camisano-2017 & {
+					color: $camisano-2017-second;
+				}
+			}
+		}
+
+		.bar-button {		// header burger-button
+			.tremignon-2017 & {
+				color: $tremignon-2017-second;
+			}
+			.camisano-2017 & {
+				color: $camisano-2017-second;
+			}
+		}
+
+//}
+//-------------------------------------------------//
+//------------------ END HEADER -------------------//
+//-------------------------------------------------//
+
+//-------------------------------------------------//
+//------------------- CONTENT ---------------------//
+//-------------------------------------------------//
+.content {	// content background
+	&.tremignon-2017 {
+		background-color: $tremignon-2017-second;
+	}
+	&.camisano-2017 {
+		background-color: $camisano-2017-second;
+	}
+}
+
+//-------------------------------------------------//
+//------------------ END CONTENT ------------------//
+//-------------------------------------------------//

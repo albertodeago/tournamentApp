@@ -4,6 +4,8 @@ import { NavController } from 'ionic-angular';
 
 import { Camera, Transfer } from 'ionic-native';
 
+import { TournamentData } from '../../providers/tournamentData';
+
 @Component({
   selector: 'page-photos',
   templateUrl: 'photos.html'
@@ -13,7 +15,12 @@ export class Photos {
 	imageSrc: string;
 	counter: number;
 
-  constructor(public navCtrl: NavController) {
+	tournamentData: TournamentData;
+
+  constructor(public navCtrl: NavController,
+  						public _tData: TournamentData) {
+  	this.tournamentData = _tData;
+
     this.imageSrc = "";
     this.counter = 0;
   }

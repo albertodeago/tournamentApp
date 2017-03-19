@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header [ngClass]="tournamentData.tournamentName">
   <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
@@ -7,7 +7,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content  [ngClass]="tournamentData.tournamentName" padding>
 
 
   <ion-card *ngFor="let match of mymatches">

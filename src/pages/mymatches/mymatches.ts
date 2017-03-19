@@ -41,17 +41,22 @@ export class MyMatches {
   	this.modalC = _modalC;
 
   	// create the modal to let the user select the tournament //
-  	let _loader = this.loaderC.create({
-		  	content: "Caricamento lista tornei..."
-		  });
-		_loader.present();
-		var tournamentSelectionModal = this.modalC.create( SelectTournament );
-		tournamentSelectionModal.present();
-		this.events.subscribe('tournament:selected', (data) => {
-			_loader.dismiss();
-			tournamentSelectionModal.dismiss();
-			this.onSelectedTournament(data.tournament);
-		});	 
+  	if(this.tournamentData.tournamentName === ""){
+	  	let _loader = this.loaderC.create({
+			  	content: "Caricamento lista tornei..."
+			  });
+			_loader.present();
+			var tournamentSelectionModal = this.modalC.create( SelectTournament );
+			tournamentSelectionModal.present();
+			this.events.subscribe('tournament:selected', (data) => {
+				_loader.dismiss();
+				tournamentSelectionModal.dismiss();
+				this.onSelectedTournament(data.tournament);
+			});	 
+		}
+		else {
+			this.onSelectedTournament( this.tournamentData.tournamentName );
+		}
   }
 
   onSelectedTournament(tournament) {
@@ -93,7 +98,7 @@ export class MyMatches {
   	var p = this.storage.get('team');
   	p.then( (value) => {
   		if(!value){
-  			console.log("first time");
+  			console.log("first time, presenting the modal to 'registrate'");
   			// open a modal view to get first access data from user
   			let modal = modalC.create( FirstAccess );
 

@@ -6,8 +6,8 @@
 <ion-content class="card-background-page">
 
   <ion-card *ngFor="let tournament of tournamentList" (click)="selectTournament(tournament)">
-    <img src="../../assets/other/menu.jpg"/>
-    <div class="card-title">{{tournament}}</div>
+    <img src="../../assets/tournament-images/{{tournament}}.jpg"/>
+    <!-- <span class="card-title">{{tournament}}</span> -->
   </ion-card>
 
 </ion-content>
