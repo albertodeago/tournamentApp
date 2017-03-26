@@ -22,6 +22,7 @@ export class TournamentData {
 	matches: any;
 	players: any;
 	teams: any;
+	groups: any;
 	isPopulated: boolean;
 
 	tournamentList: any;
@@ -82,6 +83,7 @@ export class TournamentData {
 				this.players = data.players;
 				this.teams = data.teams;
 				this.isPopulated = true;
+				this.createGroupStages();
 				console.log("Fetched data from openshift! Emitting event 'data:fetched'", data);
 				this.events.publish('data:fetched', true);
 			},
@@ -89,6 +91,13 @@ export class TournamentData {
 				console.log("Error while retrieving all data: ", err);
 			}
 		);
+	}
+
+	createGroupStages() {
+		this.groups = [];
+		for(var i=0;i<this.matches.length;++i)
+			if(this.groups.indexOf(this.matches[i].group) === -1)
+				this.groups.push(this.matches[i].group);
 	}
 
 	sendIntelligenceData(param){

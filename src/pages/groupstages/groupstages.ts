@@ -2,21 +2,37 @@ import { Component } from '@angular/core';
 
 import { NavController } from 'ionic-angular';
 
-import { Group1 } from './groups/group1';
-import { Group2 } from './groups/group2';
+import { TournamentData } from '../../providers/tournamentData';
+
+import { GenericGroup } from './groups/genericGroup';
+//import { Group1 } from './groups/group1';
+//import { Group2 } from './groups/group2';
 
 @Component({
-  selector: 'page-groupstages',
   templateUrl: 'groupstages.html'
 })
 export class GroupStages {
 
-	tab1: any;
-	tab2: any;
+	//tab1: any;
+	//tab2: any;
+	tabs: any;
 
-  constructor(public navCtrl: NavController) {
-    this.tab1 = Group1;
-    this.tab2 = Group2;
+  constructor(public navCtrl: NavController, public _tData: TournamentData) {
+
+  	console.log("GROUPSTAGES ", _tData.groups);
+
+  	this.tabs = [];
+  	for(let groupName of _tData.groups){
+  		console.log("Creating groups ", groupName);
+  		this.tabs.push({
+  			'root': GenericGroup,
+  			'groupName': groupName
+  		});
+  	}
+  	console.log("GOT " + this.tabs.length + " GROUPS");
+
+//    this.tab1 = Group1;
+  //  this.tab2 = Group2;
   }
 
 }
@@ -32,3 +48,5 @@ array on tournamentData, we slice one element and create a group page with that.
 If re-selecting the groupstages page finds an empty tournamnetData group array 
 we have to create a function to repopulate and call it in this constructor.
 */
+
+// TODO: in the server, we have to differentiate groupstages from final groups, (i.e. group A,B and silver,gold)

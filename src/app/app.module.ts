@@ -7,6 +7,7 @@ import { MyMatches } from '../pages/mymatches/mymatches';
 import { GroupStages } from '../pages/groupstages/groupstages';
 import { Group1 } from '../pages/groupstages/groups/group1';
 import { Group2 } from '../pages/groupstages/groups/group2';
+import { GenericGroup } from '../pages/groupstages/groups/genericGroup';
 import { FinalStages } from '../pages/finalstages/finalstages';
 import { Photos } from '../pages/photos/photos';
 import { Menu } from '../pages/menu/menu';
@@ -27,6 +28,7 @@ import { IonicImageViewerModule } from 'ionic-img-viewer'; // wait for github re
     Menu,
     Group1,
     Group2,
+    GenericGroup,
     FirstAccess,
     SelectTournament
   ],
@@ -44,6 +46,7 @@ import { IonicImageViewerModule } from 'ionic-img-viewer'; // wait for github re
     Menu,
     Group1,
     Group2,
+    GenericGroup,
     FirstAccess,
     SelectTournament
   ],

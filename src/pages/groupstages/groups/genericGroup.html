@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Group {{groupName}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+
+	<ion-card>
+		<ion-card-content>
+			<div class="team-list">
+				<span id="team-{{i}}" class="team" *ngFor="let team of teams; let i = index" [attr.data-index]="i">
+					{{team.name}}
+				</span>
+			</div>
+
+			<!-- <span *ngFor="let color of teamColors"> {{color}}</span> -->
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card *ngFor="let match of matches; let i=index" [attr.data-index]="i" id="match-{{i}}">
+	  <ion-card-header>
+	    <span class="date">{{match.date}}</span> - <span class="time">{{match.time}}</span>
+	  </ion-card-header>
+	  <ion-card-content>
+	  	<p class="vs-row">
+	  		<span class="team1">{{match.team1}}</span> 
+	  			VS 
+	  		<span class="team2">{{match.team2}}</span>
+	  	</p>
+		<p class="referee">Arbitro: {{match.referee}}</p>
+		<p class="field">Campo {{match.playingField}}</p>
+	  </ion-card-content>
+	</ion-card>
+</ion-content>
