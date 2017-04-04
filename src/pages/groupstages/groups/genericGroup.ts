@@ -13,26 +13,22 @@ export class GenericGroup {
 	teams: any;
 	teamColors: any;
 	groupName: string;
-	teamIndexMap: any;
 
 	constructor(public navCtrl: NavController, 
-				public navParams: NavParams,
-				public _tData: TournamentData) { // pass groupName here
+							public navParams: NavParams,
+							public _tData: TournamentData) {
 		
 		this.groupName = navParams.data;
-		this.matches = [];
-		this.teams = [];
-		this.teamIndexMap = {};
-		this.teamColors = [];
+		var sameGroup = function(value){
+			return value.group === this.groupName;
+		}.bind(this);
 		
-		for(let i=0, l=_tData.matches.length; i<l; ++i){
-			if(_tData.matches[i].group === this.groupName)
-				this.matches.push(_tData.matches[i]);
-		}
-		for(let i=0, l=_tData.teams.length; i<l; ++i){
-			if(_tData.teams[i].group === this.groupName){
-				this.teams.push(_tData.teams[i]);
-			}
-		}
+		this.matches = _tData.matches.filter(sameGroup);
+		this.teams = _tData.teams.filter(sameGroup);
 	}
 }
+
+/*
+Nella parte alla della schermata di group stages si potrebbero mettere le squadre una sotto l'altra e
+a dx una pallina per ogni punto che la squadra ha collezionato
+*/

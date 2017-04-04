@@ -8,9 +8,12 @@
 	<ion-card>
 		<ion-card-content>
 			<div class="team-list">
-				<span id="team-{{i}}" class="team" *ngFor="let team of teams; let i = index" [attr.data-index]="i">
+				<div id="team-{{i}}" class="team" *ngFor="let team of teams; let i = index" [attr.data-index]="i">
 					{{team.name}}
-				</span>
+					<div class="container-punti">
+						<span class="punti-squadra"></span>
+					</div>
+				</div>
 			</div>
 
 			<!-- <span *ngFor="let color of teamColors"> {{color}}</span> -->

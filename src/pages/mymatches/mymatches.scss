@@ -6,8 +6,9 @@
 	display: inline-block;
 }
 
-.field {
+.field, .type {
 	float: right;
+	font-weight: 300;
 }
 
 .card {

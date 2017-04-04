@@ -171,3 +171,9 @@ export class MyMatches {
 
 
 }
+
+
+/*
+nel template metterei anche le partite giocate, però SOTTO a quelle da giocare separate da qualcosa 
+(forse un recap di quante partite hai giocato, quante vinte quante perse set fatti set persi?)
+*/
