@@ -32,10 +32,21 @@ $colors: (
 );
 
 // tremignon-2017 variables //
-$tremignon-2017-first : #fff;
-$tremignon-2017-second: #ccc;
-$tremignon-2017-third : #000;
-$tremignon-2017-fourth: #ffffff;
+$tremignon-2017-header-bcg: #fff;
+$tremignon-2017-header-color: #000;
+$tremignon-2017-header-h1: #333;
+$tremignon-2017-header-h2: #666;
+
+$tremignon-2017-body-bcg: #fff;
+
+$tremignon-2017-card-bcg: #fff;
+$tremignon-2017-card-color: #000;
+$tremignon-2017-card-h1: #333;
+$tremignon-2017-card-h2: #666;
+
+$tremignon-2017-sc1: #00f;
+$tremignon-2017-sc2: #0f0;
+$tremignon-2017-sc3: #ddd;
 
 // camisano-2017 variables //
 $camisano-2017-first : #ffffff;
@@ -100,7 +111,7 @@ $camisano-2017-fourth: #000000;
 		.toolbar {						// header background
 			.toolbar-background {
 				.tremignon-2017 & {
-					background: $tremignon-2017-first;
+					background: $tremignon-2017-header-bcg;
 				}
 				.camisano-2017 & {
 					background: $camisano-2017-first;
@@ -109,7 +120,7 @@ $camisano-2017-fourth: #000000;
 			
 			.toolbar-title {		// header title
 				.tremignon-2017 & {
-					color: $tremignon-2017-second;
+					color: $tremignon-2017-sc1;
 				}
 				.camisano-2017 & {
 					color: $camisano-2017-second;
@@ -119,7 +130,7 @@ $camisano-2017-fourth: #000000;
 
 		.bar-button {		// header burger-button
 			.tremignon-2017 & {
-				color: $tremignon-2017-second;
+				color: $tremignon-2017-sc1;
 			}
 			.camisano-2017 & {
 				color: $camisano-2017-second;
@@ -134,15 +145,34 @@ $camisano-2017-fourth: #000000;
 //-------------------------------------------------//
 //------------------- CONTENT ---------------------//
 //-------------------------------------------------//
-.content {	// content background
+/*.content {	// content background
 	&.tremignon-2017 {
 		background-color: $tremignon-2017-second;
 	}
 	&.camisano-2017 {
 		background-color: $camisano-2017-second;
 	}
-}
+}*/
 
 //-------------------------------------------------//
 //------------------ END CONTENT ------------------//
+//-------------------------------------------------//
+
+//-------------------------------------------------//
+//------------------ NAV MENU ---------------------//
+//-------------------------------------------------//
+.menu-inner {
+	.toolbar-background-md {
+		background-color: #ccc;
+
+		.tremignon-2017 & {
+			background-color: #666;
+		}
+		.camisano-2017 & {
+			background-color:  $camisano-2017-second;
+		}
+	}
+}
+//-------------------------------------------------//
+//------------------ NAV MENU ---------------------//
 //-------------------------------------------------//

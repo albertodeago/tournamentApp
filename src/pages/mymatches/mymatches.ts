@@ -121,10 +121,10 @@ export class MyMatches {
 		  					// Register the player on the DB
 		  					var playerObj = {
 		  						"name": this.personalName,
-		  						"isPlayeR": this.isPlayer,
+		  						"isPlayer": this.isPlayer,
 		  						"team": this.personalTeam
 		  					}
-		  					this.tournamentData.createNewPlayer(playerObj);
+		  					this.tournamentData.createNewPlayer(playerObj);;
 
 		  				}, (rej) => {
 		  					console.log("Setting isPlayer on storage failed ", rej)
@@ -149,6 +149,12 @@ export class MyMatches {
 		  			this.isPlayer = val;
 
 		  			console.log("... got " + this.personalName + " " + this.personalTeam + " " + this.isPlayer);
+		  			var data = {
+		  				team: this.personalTeam,
+		  				name: this.personalName,
+		  				isPlayer: this.isPlayer
+		  			}
+	  				this.tournamentData.setPersonalData( data );
 		  			this.filterMyMatches(this.allmatches);
 		  			this.tournamentData.sendIntelligenceData({
 		  				'type': 'access',

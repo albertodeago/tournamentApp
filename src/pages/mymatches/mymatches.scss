@@ -2,6 +2,15 @@
 	font-size: 2rem;
 }
 
+.time, .date {
+	.tremignon-2017 & {
+		color: $tremignon-2017-sc1;
+	}
+	.camisano-2017 & {
+		//color: $camisano-2017-sc1;
+	}
+}
+
 .referee {
 	display: inline-block;
 }
@@ -14,7 +23,7 @@
 .card {
 	// card background //
 	.tremignon-2017 & {
-		background-color: $tremignon-2017-first;
+		background-color: $tremignon-2017-sc3;
 	}
 	.camisano-2017 & {
 		background-color: $camisano-2017-first;
@@ -23,7 +32,7 @@
 	.card-header {
 		// header text color //
 		.tremignon-2017 & {
-			color: $tremignon-2017-third;
+			color: $tremignon-2017-card-color;
 		}
 		.camisano-2017 & {
 			color: $camisano-2017-third;

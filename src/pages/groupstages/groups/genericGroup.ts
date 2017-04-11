@@ -14,9 +14,12 @@ export class GenericGroup {
 	teamColors: any;
 	groupName: string;
 
+	tournamentData: TournamentData
+
 	constructor(public navCtrl: NavController, 
 							public navParams: NavParams,
 							public _tData: TournamentData) {
+		this.tournamentData = _tData;
 		
 		this.groupName = navParams.data;
 		var sameGroup = function(value){

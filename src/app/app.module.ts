@@ -13,7 +13,7 @@ import { FirstAccess } from '../pages/firstaccess/firstaccess';
 import { SelectTournament } from '../pages/selecttournament/selecttournament';
 import { TournamentData } from '../providers/tournamentData';
 
-import { IonicImageViewerModule } from 'ionic-img-viewer'; // wait for github reply
+import { IonicImageViewerModule } from 'ionic-img-viewer';
 
 
 @NgModule({

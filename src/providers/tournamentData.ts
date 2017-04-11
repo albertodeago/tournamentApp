@@ -17,6 +17,8 @@ export class TournamentData {
 	playerEndPoint: string;
 	postEndPoint: string;
 
+	personalData: any;
+
 	tournamentName: string;
 
 	matches: any;
@@ -74,6 +76,10 @@ export class TournamentData {
 			this.initEndpoints();
 			this.getDataOfTournament();
 		}
+	}
+
+	setPersonalData(data) {
+		this.personalData = data;
 	}
 
 	getDataOfTournament(){
@@ -134,6 +140,8 @@ export class TournamentData {
       }, error => {
         console.log("Error registering new player");
       });
+
+     this.setPersonalData(param);
 	}
 
 	createPost(){
