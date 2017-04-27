@@ -10,6 +10,8 @@ import { TournamentData } from '../../../providers/tournamentData';
 export class GenericGroup {
 
 	matches: any;
+	matchesPlayed: any;
+	matchesNotPlayed: any;
 	teams: any;
 	teamColors: any;
 	groupName: string;
@@ -27,7 +29,13 @@ export class GenericGroup {
 		}.bind(this);
 		
 		this.matches = _tData.matches.filter(sameGroup);
+		this.separateMatches();
 		this.teams = _tData.teams.filter(sameGroup);
+	}
+
+	separateMatches(){
+		this.matchesPlayed = this.matches.filter( (match) => { return match.alreadyPlayed });
+		this.matchesNotPlayed = this.matches.filter( (match) => { return !match.alreadyPlayed });
 	}
 }
 

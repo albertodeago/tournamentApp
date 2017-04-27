@@ -52,6 +52,8 @@ export class TournamentData {
 	}
 
 	getTournamentList(){
+		console.log("trying to get tournament list...");
+		const self = this;
 		this.tournamentListPromise = new Promise(function(resolve, reject){
 			this.http.get(this.getTournamentListEndpoint).map(res => res.json()).subscribe(
 			data => {
@@ -62,7 +64,10 @@ export class TournamentData {
 			},
 			err => {
 				console.log("Error while retrieving the tournament list: ", err);
-				reject();
+				//reject();
+				setTimeout(() => {
+					self.getTournamentList();
+				}, 2000);
 			}
 		);
 		}.bind(this));
@@ -90,6 +95,8 @@ export class TournamentData {
 				this.teams = data.teams;
 				this.isPopulated = true;
 				this.createGroupStages();
+				this.addScores();
+				this.addTeamPoints();
 				console.log("Fetched data from openshift! Emitting event 'data:fetched'", data);
 				this.events.publish('data:fetched', true);
 			},
@@ -102,8 +109,33 @@ export class TournamentData {
 	createGroupStages() {
 		this.groups = [];
 		for(var i=0;i<this.matches.length;++i)
-			if(this.groups.indexOf(this.matches[i].group) === -1)
+			if(this.matches[i].type === "group-stage" && this.groups.indexOf(this.matches[i].group) === -1)
 				this.groups.push(this.matches[i].group);
+	}
+
+	addTeamPoints() {
+		this.teams.forEach((team) => {
+			team.points = 0;
+		});
+		this.matches.forEach( (match) => {
+			if(match.alreadyPlayed && match.score && match.type === "group-stage"){
+				this.teams.forEach( (team) => {
+					if(team.name === match.team1)
+						team.points += parseInt(match.scoreA);
+					else if(team.name === match.team2)
+						team.points += parseInt(match.scoreB);
+				});
+			}
+		});
+	}
+
+	addScores() {
+		this.matches.forEach( (match) => {
+			if(match.alreadyPlayed && match.score) {
+				match.scoreA = match.score.charAt(0);
+				match.scoreB = match.score.charAt(2);
+			}
+		})
 	}
 
 	sendIntelligenceData(param){

@@ -9,10 +9,10 @@
 		<ion-card-content>
 			<div class="team-list">
 				<div id="team-{{i}}" class="team" *ngFor="let team of teams; let i = index" [attr.data-index]="i">
-					{{team.name}}
-					<div class="container-punti">
-						<span class="punti-squadra"></span>
-					</div>
+					<span class="">
+						{{team.name}}
+					</span>
+					<span class="container-punti punti-{{team.points}}"></span>
 				</div>
 			</div>
 
@@ -20,7 +20,7 @@
 		</ion-card-content>
 	</ion-card>
 
-	<ion-card *ngFor="let match of matches; let i=index" [attr.data-index]="i" id="match-{{i}}">
+	<ion-card *ngFor="let match of matchesNotPlayed; let i=index" [attr.data-index]="i" id="match-{{i}}">
 	  <ion-card-header>
 	    <span class="date">{{match.date}}</span> - <span class="time">{{match.time}}</span>
 	  </ion-card-header>
@@ -34,4 +34,34 @@
 		<p class="field">Campo {{match.playingField}}</p>
 	  </ion-card-content>
 	</ion-card>
+
+	<div class="alreadyPlayedSeparator">
+		Già giocate
+	</div>
+
+	<ion-card *ngFor="let match of matchesPlayed; let i=index" [attr.data-index]="i" id="match-{{i}}">
+	  <ion-card-header>
+	    <span class="date">{{match.date}}</span> - <span class="time">{{match.time}}</span>
+	  </ion-card-header>
+	  <ion-card-content>
+	  	<p class="vs-row">
+	  		<span class="team1">
+	  			<span class="score score-{{match.scoreA}}">
+	  				{{match.scoreA}} 
+  				</span>
+	  			{{match.team1}}
+	  		</span> 
+	  			VS 
+	  		<span class="team2">
+  				{{match.team2}}
+	  			<span class="score score-{{match.scoreB}}">
+			  		{{match.scoreB}}
+  				</span>
+  			</span>
+	  	</p>
+		<p class="referee">Arbitro: {{match.referee}}</p>
+		<p class="field">Campo {{match.playingField}}</p>
+	  </ion-card-content>
+	</ion-card>
+
 </ion-content>
