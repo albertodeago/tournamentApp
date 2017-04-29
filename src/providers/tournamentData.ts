@@ -116,6 +116,7 @@ export class TournamentData {
 	addTeamPoints() {
 		this.teams.forEach((team) => {
 			team.points = 0;
+			team.pointsArray = [];
 		});
 		this.matches.forEach( (match) => {
 			if(match.alreadyPlayed && match.score && match.type === "group-stage"){
@@ -126,6 +127,10 @@ export class TournamentData {
 						team.points += parseInt(match.scoreB);
 				});
 			}
+		});
+		this.teams.forEach((team) => {
+			for(let i=0; i<team.points; ++i)
+				team.pointsArray.push(1);
 		});
 	}
 

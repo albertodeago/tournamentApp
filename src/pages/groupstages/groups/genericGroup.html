@@ -12,7 +12,10 @@
 					<span class="">
 						{{team.name}}
 					</span>
-					<span class="container-punti punti-{{team.points}}"></span>
+					<!--<span class="container-punti punti-{{team.points}}"></span>-->
+					<span class="container-punti">
+						<span *ngFor="let point of team.pointsArray" class="punto"></span>
+					</span>
 				</div>
 			</div>
 

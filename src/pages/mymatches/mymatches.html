@@ -9,7 +9,7 @@
 
 <ion-content  [ngClass]="tournamentData.tournamentName" padding>
 
-  <ion-card *ngFor="let match of mymatches">
+  <ion-card *ngFor="let match of mymatches" [ngClass]="'match-card ' + showClass">
     <ion-card-header>
       <span class="date">{{match.date}}</span> - <span class="time">{{match.time}}</span> <span class="type">{{match.type}}</span>
     </ion-card-header>

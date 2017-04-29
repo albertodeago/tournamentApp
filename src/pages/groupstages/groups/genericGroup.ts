@@ -38,8 +38,3 @@ export class GenericGroup {
 		this.matchesNotPlayed = this.matches.filter( (match) => { return !match.alreadyPlayed });
 	}
 }
-
-/*
-Nella parte alla della schermata di group stages si potrebbero mettere le squadre una sotto l'altra e
-a dx una pallina per ogni punto che la squadra ha collezionato
-*/

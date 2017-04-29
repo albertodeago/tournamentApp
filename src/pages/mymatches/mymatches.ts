@@ -23,6 +23,8 @@ export class MyMatches {
 	isPlayer: boolean;
 	personalName: string;
 
+	showClass: string;
+
 	tournamentData: TournamentData;
 	modalC: ModalController
   
@@ -39,6 +41,7 @@ export class MyMatches {
   	this.events = _events;
   	this.tournamentData = _tData;
   	this.modalC = _modalC;
+  	this.showClass = '';
 
   	// create the modal to let the user select the tournament //
   	if(this.tournamentData.tournamentName === ""){
@@ -92,6 +95,14 @@ export class MyMatches {
   	for(let i=0,l=matches.length; i<l; ++i)
   		if(matches[i].team1 === this.personalTeam || matches[i].team2 === this.personalTeam)
   			this.mymatches.push(matches[i]);
+
+  	this.addTransition();
+  }
+
+  addTransition(){
+  	setTimeout(function(){
+  		this.showClass = 'show';
+  	}.bind(this), 250);
   }
 
   checkIfFirstAccess( modalC ){
@@ -175,6 +186,12 @@ export class MyMatches {
   	
   }
 
+  /*ngOnInit() {	// when the view is created in the DOM
+  	debugger ;
+  }
+  ionViewWillEnter() {	// when the view becomes the active one
+  	debugger ;
+  }*/
 
 }
 

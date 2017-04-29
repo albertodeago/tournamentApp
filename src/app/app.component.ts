@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, Events } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { MyMatches } from '../pages/mymatches/mymatches';
@@ -18,7 +18,9 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform) {
+  tournamentClass: string = '';
+
+  constructor(public platform: Platform, public _events: Events) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -26,10 +28,14 @@ export class MyApp {
       { title: 'Le mie partite', component: MyMatches },
       { title: 'Fase a gironi', component: GroupStages },
       { title: 'Fase finale', component: FinalStages },
-      { title: 'Foto', component: Photos },
+      { title: 'Foto', component: Photos }, 
       { title: 'Menu bar', component: Menu}
     ];
 
+    // with this we style the lateral menù
+    _events.subscribe('tournament:selected', (data) => {
+      this.tournamentClass = data.tournament;
+    });  
   }
 
   initializeApp() {

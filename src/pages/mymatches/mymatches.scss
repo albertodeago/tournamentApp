@@ -21,6 +21,7 @@
 }
 
 .card {
+	
 	// card background //
 	.tremignon-2017 & {
 		background-color: $tremignon-2017-sc3;
@@ -37,5 +38,14 @@
 		.camisano-2017 & {
 			color: $camisano-2017-third;
 		}
+	}
+}
+
+.match-card {
+	margin-top: 1000px;
+
+	&.show {
+		margin-top: 0;
+		transition: all 0.5s ease;
 	}
 }

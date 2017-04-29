@@ -1,86 +1,26 @@
 .team-list {
 	
 	width: 100%;
-	//height: 100px;
-
-	/*.team {
-		display: inline-block;
-		width: 50%;
-		height: 5rem;
-		padding: 5px;
-		text-align: center;
-		//border: 1px solid #333;
-		font-size: 2.5rem;
-	}*/
+	
 	.team { 
 		font-size: 2.5rem;
 		margin: 10px 0 10px 5px;
 
 		.container-punti {
 	    float: right;
-	    background: rebeccapurple;
-	    width: 0;
+	    background: transparent;
+	    width: 50%;
 	    height: 30px;
-		}
-		.punti-1{
-			width: 5%;
-		}
-		.punti-2{
-			width: 10%;
-		}
-		.punti-3{
-			width: 15%;
-		}
-		.punti-4{
-			width: 20%;
-		}
-		.punti-5{
-			width: 25%;
-		}
-		.punti-6{
-			width: 30%;
-		}
-		.punti-7{
-			width: 35%;
-		}
-		.punti-8{
-			width: 40%;
-		}
-		.punti-9{
-			width: 45%;
-		}
-		.punti-10{
-			width: 50%;
-		}
-		.punti-11{
-			width: 55%;
-		}
-		.punti-12{
-			width: 60%;
-		}
-		.punti-13{
-			width: 65%;
-		}
-		.punti-14{
-			width: 70%;
-		}
-		.punti-15{
-			width: 75%;
-		}
-		.punti-16{
-			width: 80%;
-		}
-		.punti-17{
-			width: 85%;
-		}
-		.punti-18{
-			width: 90%;
-		}
-		.punti-19{
-			width: 95%;
-		}
-		.punti-20{
-			width: 100%;
+
+	    .punto {
+	    	display: inline-block;
+	    	width: 25px;
+	    	height: 25px;
+	    	background: url('../../assets/other/volley-ball.png') no-repeat center center;
+	    	background-size: 25px 25px;
+	    	margin-right: 3px;
+	    	margin-top:5px;
+	    }
 		}
 	}
 }

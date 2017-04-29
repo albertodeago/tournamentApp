@@ -1,11 +1,11 @@
-<ion-menu [content]="content">
+<ion-menu [content]="content" [ngClass]="tournamentClass">
   <ion-header>
     <ion-toolbar>
-      <ion-title>3MignonTheBeach</ion-title>
+      <ion-title>{{tournamentClass}}</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <ion-content>
+  <ion-content [ngClass]="tournamentClass">
     <ion-list>
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
         <span>
