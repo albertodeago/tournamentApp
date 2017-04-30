@@ -1,5 +1,21 @@
+.select-tournament-card {
+	margin-bottom: 25px;
+}
 
-.card-title {
-	color: #fff;
-	font-size: 20rem;
+.tournament-image-bkg {
+	display: none;
+}
+.tournament{
+	height: 50vh;
+	width: 100%;
+	//display: none;
+
+	&.tremignon-2017 {
+		background: url('../assets/tournament-images/tremignon-2017.jpg') no-repeat center center;
+		background-size: cover;
+	}
+	&.camisano-2017 {
+		background: url('../assets/tournament-images/camisano-2017.jpg') no-repeat center center;
+		background-size: cover;
+	}
 }

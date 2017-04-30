@@ -6,20 +6,131 @@
 		font-size: 2.5rem;
 		margin: 10px 0 10px 5px;
 
+		// .team-name {
+		// 	text-align: center;
+		// }
+
 		.container-punti {
-	    float: right;
 	    background: transparent;
-	    width: 50%;
-	    height: 30px;
+	    height: 40px;
+	    position: relative;
 
 	    .punto {
+	    	position: absolute;
+	    	left: -100px;
 	    	display: inline-block;
-	    	width: 25px;
-	    	height: 25px;
-	    	background: url('../../assets/other/volley-ball.png') no-repeat center center;
-	    	background-size: 25px 25px;
-	    	margin-right: 3px;
-	    	margin-top:5px;
+	    	width: 14%;
+	    	height: 100%;
+	    	background: url('../assets/other/volley-ball.png') no-repeat center center;
+	    	background-size: 100%;
+
+	    	&.trans {
+	    		&.punto-0 {
+		    		transition: all 1s ease 0s;
+	    			left: 90%;
+	    			&.move {
+		    			animation: spin 1s ease 0s;
+		    		}
+	    		}
+	    		&.punto-1 {
+		    		transition: all 1s ease 0.4s;
+	    			left: 83%;
+	    			&.move {
+		    			animation: spin 1s ease 0.4s;
+		    		}
+	    		}
+	    		&.punto-2 {
+		    		transition: all 1s ease 0.8s;
+	    			left: 77%;
+	    			&.move {
+		    			animation: spin 1s ease 0.8s;
+		    		}
+	    		}
+	    		&.punto-3 {
+		    		transition: all 1s ease 1.2s;
+	    			left: 69%;
+	    			&.move {
+		    			animation: spin 1s ease 1.2s;
+		    		}
+	    		}
+	    		&.punto-4 {
+		    		transition: all 1s ease 1.6s;
+	    			left: 61%;
+	    			&.move {
+		    			animation: spin 1s ease 1.6s;
+		    		}
+	    		}
+	    		&.punto-5 {
+		    		transition: all 1s ease 2s;
+	    			left: 53%;
+	    			&.move {
+		    			animation: spin 1s ease 2s;
+		    		}
+	    		}
+	    		&.punto-6 {
+		    		transition: all 1s ease 2.4s;
+	    			left: 47%;
+	    			&.move {
+		    			animation: spin 1s ease 2.4s;
+		    		}
+	    		}
+	    		&.punto-7 {
+		    		transition: all 1s ease 2.8s;
+		    		left: 39%;
+	    			&.move {
+		    			animation: spin 1s ease 2.8s;
+		    		}
+	    		}
+	    		&.punto-8 {
+		    		transition: all 1s ease 3.2s;
+	    			left: 31%;
+	    			&.move {
+		    			animation: spin 1s ease 3.2s;
+		    		}
+	    		}
+	    		&.punto-9 {
+		    		transition: all 1s ease 3.6s;
+	    			left: 23%;
+	    			&.move {
+		    			animation: spin 1s ease 3.6s;
+		    		}
+	    		}
+	    		&.punto-10 {
+		    		transition: all 1s ease 4s;
+	    			left: 15%;
+	    			&.move {
+		    			animation: spin 1s ease 4s;
+		    		}
+	    		}
+	    		&.punto-11 {
+		    		transition: all 1s ease 4.4s;
+	    			left: 9%;
+	    			&.move {
+		    			animation: spin 1s ease 4.4s;
+		    		}
+	    		}
+	    		&.punto-12 {
+		    		transition: all 1s ease 4.8s;
+	    			left: 1%;
+	    			&.move {
+		    			animation: spin 1s ease 4.8s;
+		    		}
+	    		}
+	    		&.punto-13 {
+		    		transition: all 1s ease 5.2s;
+	    			left: -7%;
+	    			&.move {
+		    			animation: spin 1s ease 5.2s;
+		    		}
+	    		}
+	    		&.punto-14 {
+		    		transition: all 1s ease 5.6s;
+	    			left: -15%;
+	    			&.move {
+		    			animation: spin 1s ease 5.6s;
+		    		}
+	    		}
+	    	}
 	    }
 		}
 	}
@@ -27,8 +138,22 @@
 
 .vs-row {
 	text-align: center;
+
+	.my-team {
+
+	}
 }
 
 .team1, .team2 {
 	font-size: 2rem;
+}
+
+.alreadyPlayedSeparator{
+	text-align: center;
+	font-size: 3rem;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(720deg); }
 }

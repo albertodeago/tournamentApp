@@ -5,11 +5,13 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-content [ngClass]="tournamentClass">
+  <ion-content [ngClass]="tournamentClass + ' lateral-menu'">
     <ion-list>
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        <span>
-          {{p.title}}
+        <span class="lateral-menu-item">
+          <span class="lateral-menu-icon" [ngClass]="p.title"></span>
+          <span class="lateral-menu-label">{{p.title}}</span>
+          <span class="ghost"></span>
         </span>
       </button>
     </ion-list>

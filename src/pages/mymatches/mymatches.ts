@@ -15,6 +15,8 @@ export class MyMatches {
 
 	allmatches: any;
 	mymatches: any;
+	matchesPlayed: any;
+	matchesNotPlayed: any;
 	teams: any;
 	storage: Storage;
 	events: Events;
@@ -24,6 +26,7 @@ export class MyMatches {
 	personalName: string;
 
 	showClass: string;
+	siluetteNumber: number;
 
 	tournamentData: TournamentData;
 	modalC: ModalController
@@ -37,6 +40,8 @@ export class MyMatches {
   	
   	this.allmatches = [];
   	this.mymatches = [];
+  	this.matchesPlayed = [];
+  	this.matchesNotPlayed = [];
   	this.storage = _storage;
   	this.events = _events;
   	this.tournamentData = _tData;
@@ -96,10 +101,17 @@ export class MyMatches {
   		if(matches[i].team1 === this.personalTeam || matches[i].team2 === this.personalTeam)
   			this.mymatches.push(matches[i]);
 
+  	this.separateMatches();
   	this.addTransition();
   }
 
   addTransition(){
+  	function getRandomIntInclusive(min, max) {
+		  min = Math.ceil(min);
+		  max = Math.floor(max);
+		  return Math.floor(Math.random() * (max - min + 1)) + min;
+		}
+		this.siluetteNumber = getRandomIntInclusive(1, 19);
   	setTimeout(function(){
   		this.showClass = 'show';
   	}.bind(this), 250);
@@ -185,6 +197,11 @@ export class MyMatches {
   	});
   	
   }
+
+	separateMatches(){
+		this.matchesPlayed = this.mymatches.filter( (match) => { return match.alreadyPlayed });
+		this.matchesNotPlayed = this.mymatches.filter( (match) => { return !match.alreadyPlayed });
+	}
 
   /*ngOnInit() {	// when the view is created in the DOM
   	debugger ;

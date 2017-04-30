@@ -16,12 +16,17 @@ export class GenericGroup {
 	teamColors: any;
 	groupName: string;
 
-	tournamentData: TournamentData
+	tournamentData: TournamentData;
+
+	transClass: string;
+	moveClass: string;
 
 	constructor(public navCtrl: NavController, 
 							public navParams: NavParams,
 							public _tData: TournamentData) {
 		this.tournamentData = _tData;
+		this.moveClass = "";
+		this.transClass = "";
 		
 		this.groupName = navParams.data;
 		var sameGroup = function(value){
@@ -37,4 +42,14 @@ export class GenericGroup {
 		this.matchesPlayed = this.matches.filter( (match) => { return match.alreadyPlayed });
 		this.matchesNotPlayed = this.matches.filter( (match) => { return !match.alreadyPlayed });
 	}
+  
+  // we reset the classes for animation and transition when the view becomes active
+  ionViewWillEnter() {	// when the view becomes the active one
+  	this.moveClass = this.transClass = "";
+  	window.setTimeout( () => {
+			this.moveClass = "move";
+			this.transClass = "trans";
+		}, 150);
+
+  }
 }

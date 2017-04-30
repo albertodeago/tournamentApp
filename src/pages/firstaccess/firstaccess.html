@@ -5,10 +5,10 @@
 </ion-header>
 <ion-content>
 
-	<h2>Attenzione, i dati non possono essere cambiati dopo l'inserimento!</h2>
+	<h2 class="my-warning">Attenzione, i dati non possono essere cambiati dopo l'inserimento!</h2>
 
   <ion-item>
-    <ion-input [(ngModel)]="name" type="text" placeholder="Nome o soprannome"></ion-input>
+    <ion-input class="name-input" [(ngModel)]="name" type="text" placeholder="Nome o soprannome"></ion-input>
   </ion-item>
 
 	<ion-item>
@@ -18,13 +18,13 @@
 
 	<ion-list>
 	  <ion-item>
-	    <ion-label>Con che squadra?</ion-label>
+	    <ion-label>Con che squadra? (se non giochi scegli chi tifare)</ion-label>
 	    <ion-select [(ngModel)]="team">
 	      <ion-option *ngFor="let t of teamList">{{t}}</ion-option>
 	    </ion-select>
 	  </ion-item>
 	</ion-list>
 
-	<button ion-button (click)="confirmData()">Conferma</button>
+	<button ion-button block (click)="confirmData()">Conferma</button>
 
 </ion-content>

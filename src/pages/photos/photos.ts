@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { NavController } from 'ionic-angular';
 
-import { Camera, Transfer } from 'ionic-native';
+import { Camera, Transfer, ImagePicker } from 'ionic-native';
 
 import { TournamentData } from '../../providers/tournamentData';
 
@@ -45,31 +45,46 @@ export class Photos {
 
 	getImage(){
 
+		return ImagePicker.getPictures({
+			quality: 100,
+			maximumImagesCount: 15
+		}).then((imageUrls) => {
+			alert(imageUrls);
+			return imageUrls;
+		}, (err) => {                              
+      if(err.error == "cordova_not_available") {               
+          alert("Cordova is not available, please make sure you have your app deployed on a simulator or device");                                   
+      } else {                
+          alert("Failed to open albums: " + err.error);
+      }
+		})
 	}
 
 	uploadImage(image){
-		alert("uploading image");
+		alert("uploading image " + image);
 		let ft = new Transfer();
     let filename = "test-image-upload.jpg";
     let options = {
         fileKey: 'file',
         fileName: filename,
         mimeType: 'image/jpeg',
-        /*chunkedMode: false,
+        chunkedMode: false,
         headers: {
             'Content-Type' : undefined
-        },*/
+        },
         params: {
-            fileName: filename
+            fileName: filename,
+            author: 'giovanni',
+            text: 'questo è un testo abbastanza lungo giusto per provare...'
         }
     }; 
     //ft.onProgress(this.onProgress);
-    ft.upload(image, "http://192.168.1.40:3000/testUpload", options, false)
-    .then((result: any) => {
-      this.success(result);
-    }, (err) => {
-    	this.failed(err);
-    }); 
+    ft.upload(image, "http://192.168.1.104:3000/testUpload", options, false)
+	    .then((result: any) => {
+	      this.success(result);
+	    }, (err) => {
+	    	this.failed(err);
+	    }); 
 	}
 
 	onProgress(){

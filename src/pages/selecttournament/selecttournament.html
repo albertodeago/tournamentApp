@@ -5,9 +5,10 @@
 </ion-header>
 <ion-content class="card-background-page">
 
-  <ion-card *ngFor="let tournament of tournamentList" (click)="selectTournament(tournament)">
-    <img src="../../assets/tournament-images/{{tournament}}.jpg"/>
-    <!-- <span class="card-title">{{tournament}}</span> -->
+  <ion-card *ngFor="let tournament of tournamentList" (click)="selectTournament(tournament)" [ngClass]="'select-tournament-card'">
+    <img class="tournament-image-bkg" src="../assets/tournament-images/{{tournament}}.jpg"/>
+    <div class="tournament" [ngClass]="tournament">    	
+    </div>
   </ion-card>
 
 </ion-content>

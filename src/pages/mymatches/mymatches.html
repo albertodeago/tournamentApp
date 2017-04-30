@@ -7,9 +7,9 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content  [ngClass]="tournamentData.tournamentName" padding>
+<ion-content class="my-matches-content siluette-{{siluetteNumber}}" [ngClass]="tournamentData.tournamentName" padding>
 
-  <ion-card *ngFor="let match of mymatches" [ngClass]="'match-card ' + showClass">
+  <ion-card *ngFor="let match of matchesNotPlayed" [ngClass]="'match-card ' + showClass">
     <ion-card-header>
       <span class="date">{{match.date}}</span> - <span class="time">{{match.time}}</span> <span class="type">{{match.type}}</span>
     </ion-card-header>
@@ -18,6 +18,35 @@
       <p class="referee" *ngIf="match.referee !== null">Arbitro: {{match.referee}}</p>
       <p class="field" *ngIf="match.playingField !== null">Campo {{match.playingField}}</p>
       <!-- <img src="../../assets/other/my-icons/serve.svg" width="10px"/> -->
+    </ion-card-content>
+  </ion-card>
+
+  <div class="alreadyPlayedSeparator">
+    Giocate
+  </div>
+
+  <ion-card *ngFor="let match of matchesPlayed; let i=index" [attr.data-index]="i" id="match-{{i}}">
+    <ion-card-header>
+      <span class="date">{{match.date}}</span> - <span class="time">{{match.time}}</span>
+    </ion-card-header>
+    <ion-card-content>
+      <p class="vs-row">
+        <span class="team1" [ngClass]="match.team1 === personalTeam ? 'my-team' : ''">
+          <span class="score score-{{match.scoreA}}">
+            {{match.scoreA}} 
+          </span>
+          {{match.team1}}
+        </span> 
+          VS 
+        <span class="team2" [ngClass]="match.team2 === personalTeam ? 'my-team' : ''">
+          {{match.team2}}
+          <span class="score score-{{match.scoreB}}">
+            {{match.scoreB}}
+          </span>
+        </span>
+      </p>
+    <p class="referee">Arbitro: {{match.referee}}</p>
+    <p class="field">Campo {{match.playingField}}</p>
     </ion-card-content>
   </ion-card>
   

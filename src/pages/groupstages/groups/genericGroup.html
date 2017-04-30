@@ -9,13 +9,13 @@
 		<ion-card-content>
 			<div class="team-list">
 				<div id="team-{{i}}" class="team" *ngFor="let team of teams; let i = index" [attr.data-index]="i">
-					<span class="">
+					<div class="team-name">
 						{{team.name}}
-					</span>
+					</div>
 					<!--<span class="container-punti punti-{{team.points}}"></span>-->
-					<span class="container-punti">
-						<span *ngFor="let point of team.pointsArray" class="punto"></span>
-					</span>
+					<div class="container-punti">
+						<span *ngFor="let point of team.pointsArray; let j = index" [attr.data-index]="j" class="punto punto-{{j}} {{moveClass}} {{transClass}}"></span>
+					</div>
 				</div>
 			</div>
 
@@ -39,7 +39,7 @@
 	</ion-card>
 
 	<div class="alreadyPlayedSeparator">
-		Già giocate
+		Giocate
 	</div>
 
 	<ion-card *ngFor="let match of matchesPlayed; let i=index" [attr.data-index]="i" id="match-{{i}}">

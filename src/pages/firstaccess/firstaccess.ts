@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, Events } from 'ionic-angular';
+import { NavController, Events, ToastController } from 'ionic-angular';
 
 import { TournamentData } from '../../providers/tournamentData';
 
@@ -14,11 +14,14 @@ export class FirstAccess {
   team: string;
   teamList: any;
   events: Events;
+  toastCtrl: ToastController;
 
   constructor(public navCtrl: NavController, 
               public _tData: TournamentData,
-              public _events: Events) {
-    
+              public _events: Events,
+              public _toastCtrl: ToastController) {
+
+    this.toastCtrl = _toastCtrl;
     this.name = "";
     this.isPlayer = false;
     this.team = "";
@@ -56,7 +59,11 @@ export class FirstAccess {
   }
 
   showError(){
-    // todo to implement
+    let toast = this.toastCtrl.create({
+      message: 'Devi compilare tutti e tre i campi per proseguire',
+      duration: 3000
+    });
+    toast.present();
   }
 
   log(){

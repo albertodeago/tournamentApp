@@ -103,7 +103,12 @@ $camisano-2017-fourth: #000000;
 
 // Common rules
 // --------------------------------------------------
-
+.ghost {
+	display: inline-block;
+	height: 100%;
+	width: 0;
+	vertical-align: middle;
+}
 //-------------------------------------------------//
 //------------------- HEADER ----------------------//
 //-------------------------------------------------//
@@ -118,14 +123,19 @@ $camisano-2017-fourth: #000000;
 				}
 			}
 			
-			.toolbar-title {		// header title
-				.tremignon-2017 & {
-					color: $tremignon-2017-sc1;
-				}
-				.camisano-2017 & {
-					color: $camisano-2017-second;
+			.title {
+				padding: 0 15px 1px;
+
+				.toolbar-title {		// header title
+					.tremignon-2017 & {
+						color: $tremignon-2017-sc1;
+					}
+					.camisano-2017 & {
+						color: $camisano-2017-second;
+					}
 				}
 			}
+			
 		}
 
 		.bar-button {		// header burger-button
@@ -176,3 +186,62 @@ $camisano-2017-fourth: #000000;
 //-------------------------------------------------//
 //------------------ NAV MENU ---------------------//
 //-------------------------------------------------//
+
+
+.scroll-content {
+
+	.tremignon-2017.lateral-menu & {
+		background-color: #e0e0e0;
+	}
+	.camisano-2017.lateral-menu & {
+		background-color: $camisano-2017-second;
+	}
+
+	.item-block {
+		.tremignon-2017.lateral-menu & {
+			background-color: #e0e0e0;
+		}
+		.camisano-2017.lateral-menu & {
+			background-color: $camisano-2017-second;
+		}		
+	}
+}
+
+.lateral-menu-item {
+	position: relative;
+	display: inline-block;
+	height: 40px;
+	padding-left: 40px;
+}
+.lateral-menu-label {
+	display: inline-block;
+	height: 100%;
+	margin-left: 10px;
+}
+.lateral-menu-icon {
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	left: 0;
+
+	&.partite {
+		background: transparent url('../assets/other/calendar.png') no-repeat center center;
+		background-size: 40px 40px;
+	}
+	&.gironi {
+		background: transparent url('../assets/other/match.png') no-repeat center center;
+		background-size: 40px 40px;
+	}
+	&.finale {
+		background: transparent url('../assets/other/podium.png') no-repeat center center;
+		background-size: 40px 40px;
+	}
+	&.Foto {
+		background: transparent url('../assets/other/social.png') no-repeat center center;
+		background-size: 40px 40px;
+	}
+	&.bar {
+		background: transparent url('../assets/other/beer.png') no-repeat center center;
+		background-size: 40px 40px;
+	}
+}
